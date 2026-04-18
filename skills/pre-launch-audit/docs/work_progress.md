@@ -4,6 +4,25 @@
 
 ---
 
+## 2026-04-18 — v0.1.1 遷移至 Claude Plugin 格式
+
+### 動機
+準備發佈到 GitHub（`p62003/claude-skills-rj0217`），讓其他人可 `/plugin install` 或手動 `git clone && cp -r`。
+
+### 結構變更
+- `/mnt/d/SKILL/pre-launch-audit/` → `/mnt/d/SKILL/skills/pre-launch-audit/`（符合 Claude Plugin 慣例）
+- 新增 `/mnt/d/SKILL/.claude-plugin/plugin.json`（Plugin manifest）
+- README 改寫：含兩種安裝方式（Plugin install / 手動複製）+ 向後兼容承諾
+
+### 向後兼容策略
+- 加新 skill = 只動 `skills/` 下目錄，plugin.json 結構不變
+- 未來升級成 marketplace = 本 repo 保留為 plugin，同時加 `marketplace.json`，既有 install 路徑不失效
+
+### Dev 側保持扁平
+`~/.claude/skills/pre-launch-audit/` **保持扁平**（非 `skills/` 子目錄）— Claude Code 直接讀 `~/.claude/skills/<name>/`，不走 plugin wrapper。
+
+---
+
 ## 2026-04-18 — v0.1 初版建立
 
 ### 動機

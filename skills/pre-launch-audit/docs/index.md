@@ -4,7 +4,7 @@
 > 維護者：rj0217
 > 狀態：**v0.1 初版**（基於 setupbro 2026-04-17 實戰審計經驗抽取）
 > Dev 位置：`~/.claude/skills/pre-launch-audit/`
-> Publish 位置：`/mnt/d/SKILL/pre-launch-audit/`（本檔）
+> Publish 位置：`/mnt/d/SKILL/skills/pre-launch-audit/`（本檔，Claude Plugin 格式）
 
 ---
 
@@ -31,7 +31,7 @@ Claude Code skill — 「產品上線 / 對外推廣前的完整資安審計 SOP
 ## 3. 檔案結構
 
 ```
-/mnt/d/SKILL/pre-launch-audit/
+/mnt/d/SKILL/skills/pre-launch-audit/
 ├── SKILL.md                        # SOP 主檔（同步自 dev）
 ├── scripts/                        # 4 個確定性工具
 │   ├── passive_recon.sh            # headers / TLS / robots / security.txt / 敏感路徑
