@@ -1,6 +1,6 @@
 {
   "name": "claude-skills-rj0217",
-  "description": "rj0217 自建的 Claude Code skills 集合。所有 skill 遵循同一設計哲學：SKILL.md 是 SOP 框架，scripts/ 放確定性工作，references/ 放 checklist 與範本。Skill 是 AI 的工作指南，不是死稿命令。",
+  "description": "SOP-driven Claude Code skills collection by rj0217. Each skill follows one philosophy: SKILL.md is an SOP framework, scripts/ handles deterministic work, AI focuses on judgment. Skills are guides for AI, not command lists.",
   "author": {
     "name": "rj0217",
     "email": "dont.stop.ha@gmail.com"

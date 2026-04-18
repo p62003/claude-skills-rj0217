@@ -1,15 +1,16 @@
 # claude-skills-rj0217
 
-> **SOP-driven Claude Code skills — frameworks for AI, not command lists.**
-> First release: `pre-launch-audit` — a complete pre-deployment web security audit SOP.
+> **SOP-driven Claude Code skills collection.** Each skill delegates deterministic work to scripts and keeps AI focused on judgment. Skills are guides for AI, not command lists.
 
-[Quick Install](#quick-install) · [Skills](#included-skills) · [Philosophy](#design-philosophy) · [Backward Compatibility](#backward-compatibility) · [繁體中文](#繁體中文)
+**📄 Available in**: [繁體中文](./README_zh.md)
+
+[Quick Install](#quick-install) · [Skills](#included-skills) · [Philosophy](#design-philosophy) · [Backward Compatibility](#backward-compatibility) · [Support the project](#support-the-project)
 
 ---
 
 ## What this is
 
-A curated collection of Claude Code skills that treat **skill** as **Standard Operating Procedure (SOP)** rather than command scripts. Each skill provides:
+A curated collection of Claude Code skills under one consistent design philosophy. Each skill ships with:
 
 - **`SKILL.md`** — flow framework, judgment guidance, common AI failure modes
 - **`scripts/`** — deterministic, repetitive work delegated to bash
@@ -17,6 +18,8 @@ A curated collection of Claude Code skills that treat **skill** as **Standard Op
 - **`docs/`** — fact source + iteration history
 
 The AI reads the SOP and applies judgment; repetitive work is handed off to scripts. This saves tokens, ensures reproducibility, and keeps AI focused on value-add decisions.
+
+**Scope**: this repo is a *collection*, not a single-topic toolbox. Current inventory is security-focused (v1 is `pre-launch-audit`), but future additions may span documentation workflow, memory management, code review, and other domains.
 
 ---
 
@@ -58,7 +61,7 @@ Designed for Next.js / React / Vue / static sites before going public. Covers:
 - **5-phase flow**: context loading → passive recon → white-box audit → active testing (authorization-gated) → fix + verify + report
 - **4 scripts**: `passive_recon.sh`, `bundle_scan.sh`, `http_method_fuzz.sh`, `dep_cve_scan.sh`
 - **13 attack vectors** mapped with expected/anomalous responses (XSS, SQLi, path traversal, CSRF, rate-limit probing, bundle secret leaks, dependency CVEs, etc.)
-- **Severity matrix** (HIGH/MEDIUM/LOW/GOOD) with explicit anti-patterns to avoid
+- **Severity matrix** (HIGH/MEDIUM/LOW/GOOD) with explicit anti-patterns
 - **Report template** including meta-learning section and competitive positioning block
 
 **Differentiator from Claude's built-in `/security-review`**: `/security-review` audits pending changes on the current branch; `pre-launch-audit` audits the entire site including live behavior and can execute authorized active tests.
@@ -93,7 +96,7 @@ Why this matters:
 claude-skills-rj0217/
 ├── .claude-plugin/
 │   └── plugin.json                # Claude Plugin manifest
-├── README.md
+├── README.md / README_zh.md
 ├── .gitignore
 └── skills/
     └── <skill-name>/
@@ -128,7 +131,7 @@ Publish: /mnt/d/SKILL/skills/<name>/         # This repo, git-tracked
 1. Develop + test in `~/.claude/skills/<new>/`
 2. When stable, `cp -r` to `/mnt/d/SKILL/skills/<new>/`
 3. Write `docs/index.md` (fact source) + `docs/work_progress.md` (first iteration log)
-4. Update the "Included Skills" table in this README
+4. Update the "Included Skills" table in both READMEs
 5. Commit + push
 
 **Skill iteration**:
@@ -139,53 +142,37 @@ Publish: /mnt/d/SKILL/skills/<name>/         # This repo, git-tracked
 
 ---
 
-## Maintainer
+## Support the project
 
-[rj0217](https://github.com/p62003) · created 2026-04-18
+If these skills save you time or money (e.g. skipping a paid pentest, or faster shipping), consider supporting further development:
+
+### ☕ Ko-fi (recommended — credit card / PayPal, one-click)
+
+[![Support on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rj0217)
+
+### 🪙 Crypto (USDT / USDC on BEP20 / BSC)
+
+```
+0x55c439b27807415e80452f59ba00fee3441a802d
+```
+
+**Network**: BEP20 (Binance Smart Chain).
+**Accepted**: USDT, USDC.
+⚠️ Other networks (ERC20 / TRC20) are NOT monitored on this address — do not send.
+
+### ⭐ GitHub Star
+
+Costs nothing but helps discoverability. If this repo is useful, a star tells others it's worth their time.
 
 ---
 
-## 繁體中文
+## Contact
 
-### 簡介
+- **Discord**: https://discord.gg/x52CBg4rcE
+- **Email**: dont.stop.ha@gmail.com
 
-rj0217 自建的 Claude Code skills 集合，以 Claude Plugin 形式發佈。**所有 skill 遵循同一哲學：SKILL.md 是 SOP 框架，不是命令清單**；重複性工作交給 `scripts/`，判斷留給 AI。
+---
 
-### 目前收錄
+## Maintainer
 
-| Skill | 版本 | 用途 |
-|---|---|---|
-| [pre-launch-audit](./skills/pre-launch-audit/) | v0.1.1 | 產品上線前的完整資安審計 SOP — Web 產品 demo 推廣前使用 |
-
-### 為什麼是 SOP 不是命令清單
-
-- **省 token**：AI 不用每 session 重新組合同樣的 curl 指令
-- **可重現**：scripts 固定輸入固定輸出，AI 行為不穩定
-- **專注判斷**：AI 的 value 在判斷，不在執行模板
-- **跨 session 穩定**：scripts 不受 context / model version 影響
-- **避免 checklist 假象**：框架式 SKILL.md 強迫 AI 每步驟思考，不是走完就當完成
-
-### 快速安裝
-
-**方式 A**（Claude Code）：
-```
-/plugin install https://github.com/p62003/claude-skills-rj0217
-```
-
-**方式 B**（手動，相容 Claude Desktop）：
-```bash
-git clone https://github.com/p62003/claude-skills-rj0217.git
-cp -r claude-skills-rj0217/skills/* ~/.claude/skills/
-```
-
-### 向後兼容承諾
-
-- **加新 skill** = 只在 `skills/` 新增目錄，不動既有結構
-- **版本升級** = 記在 skill 自己的 `docs/work_progress.md`，不破壞觸發條件
-- **未來升級 marketplace**（若收錄規模變大）= 本 repo 保留為 plugin，既有 install 路徑永遠有效
-
-### 與官方 `/security-review` 的差異
-
-官方的 `/security-review` 審查 current branch 的 pending changes；`pre-launch-audit` 審查整個站包含線上行為，含可授權執行的主動測試。**互補不取代。**
-
-詳細說明見每個 skill 的 `docs/index.md`。
+[rj0217](https://github.com/p62003) · created 2026-04-18
