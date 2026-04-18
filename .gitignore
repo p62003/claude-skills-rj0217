@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Temp
+*.tmp
+*.log
+
+# macOS NTFS ADS artifacts
+*:Zone.Identifier
+*Zone.Identifier
