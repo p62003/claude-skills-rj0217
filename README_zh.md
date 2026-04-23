@@ -51,6 +51,18 @@ cp -r claude-skills-rj0217/skills/* ~/.claude/skills/
 | Skill | 版本 | 用途 |
 |---|---|---|
 | [pre-launch-audit](./skills/pre-launch-audit/) | v0.1.1 | Web 產品上線前的完整資安審計 SOP |
+| [ai-crawl-audit](./skills/ai-crawl-audit/) | v0.1.0 | 從 AI 爬蟲視角診斷網站可爬取性 — robots.txt / sitemap / llms.txt / 內容可發現性 |
+
+### ai-crawl-audit 30 秒速懂
+
+從 AI 爬蟲的角度審計任何網站。適用 Docusaurus / Next.js / Hugo / WordPress / 靜態站。
+
+- **4 階段流程**：基礎設施檢查（robots.txt、sitemap、llms.txt）→ 內容可發現性（首頁、入口頁、抽樣內容頁）→ 已知陷阱（SPA、搜尋劫持、tag 稀釋）→ 結構化報告
+- **無 scripts** — 純 AI 判斷 skill；所有資料抓取使用 Claude 內建的 WebFetch
+- **框架特定陷阱資料庫**：Docusaurus / Next.js / Hugo / WordPress
+- **含 llms.txt 建立指引**（llmstxt.org 規範）
+
+**與一般 SEO 工具的差異**：大多數 SEO 工具檢查人類端信號（meta tags / Core Web Vitals）。這個 skill 檢查的是 **AI 端信號** — ChatGPT / Perplexity / Gemini 能不能發現並理解你的內容？
 
 ### pre-launch-audit 30 秒速懂
 

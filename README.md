@@ -53,6 +53,18 @@ Restart Claude Code / Desktop to load.
 | Skill | Version | Purpose |
 |---|---|---|
 | [pre-launch-audit](./skills/pre-launch-audit/) | v0.1.1 | Complete web security audit SOP — run before shipping to production or public demo |
+| [ai-crawl-audit](./skills/ai-crawl-audit/) | v0.1.0 | Diagnose website AI crawlability — robots.txt, sitemap, llms.txt, content discoverability |
+
+### ai-crawl-audit in 30 seconds
+
+Audit any website from an AI crawler's perspective. Works with Docusaurus / Next.js / Hugo / WordPress / static sites.
+
+- **4-phase flow**: infrastructure check (robots.txt, sitemap, llms.txt) → content discoverability (homepage, entry pages, sample articles) → known pitfalls (SPA, search hijack, tag dilution) → structured report
+- **No scripts** — this skill is pure AI judgment; all data fetching uses Claude's built-in WebFetch
+- **Framework-specific pitfall database**: Docusaurus, Next.js, Hugo, WordPress
+- **Includes llms.txt creation guide** (llmstxt.org spec)
+
+**Differentiator**: most SEO audit tools check human-facing signals (meta tags, Core Web Vitals). This skill checks **AI-facing signals** — can ChatGPT/Perplexity/Gemini actually discover and understand your content?
 
 ### pre-launch-audit in 30 seconds
 
