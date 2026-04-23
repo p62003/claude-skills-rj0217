@@ -104,6 +104,7 @@ WebFetch: {URL}/{sample-article}
 
 ### 通用陷阱
 - [ ] SPA 無 SSR：首頁/內容頁 HTML 中是否只有空的 `<div id="root">`
+- [ ] 靜態 fallback 位置錯誤：如果有 crawler fallback HTML，必須放在 React mount point **外部**（sibling div），不能放在 `#app` 內部 — `createRoot().render()` 會立刻清空 mount point，半 JS 爬蟲（執行 JS 但未完整渲染）會兩頭落空
 - [ ] JavaScript-only 導航：爬蟲無法跟隨的 onClick 路由
 - [ ] 搜尋頁劫持內容路由：搜尋 plugin 覆蓋了內容索引路徑
 - [ ] 無限滾動無分頁：爬蟲只能看到第一頁內容
